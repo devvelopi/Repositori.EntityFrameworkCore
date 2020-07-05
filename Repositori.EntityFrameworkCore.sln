@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositori.EntityFrameworkCore", "Repositori.EntityFrameworkCore\Repositori.EntityFrameworkCore.csproj", "{9DC134DE-3C7A-4FB9-8A73-45CF41CF8252}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{B2877335-2434-472F-B48D-B259019174EB}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "readme", "readme", "{0D7B5AE4-CB4E-45A4-AE4B-6698858EC97C}"
+ProjectSection(SolutionItems) = preProject
+	README.md = README.md
+	CHANGELOG.md = CHANGELOG.md
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DC134DE-3C7A-4FB9-8A73-45CF41CF8252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC134DE-3C7A-4FB9-8A73-45CF41CF8252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC134DE-3C7A-4FB9-8A73-45CF41CF8252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC134DE-3C7A-4FB9-8A73-45CF41CF8252}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
