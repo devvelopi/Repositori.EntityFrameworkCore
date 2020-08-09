@@ -139,13 +139,16 @@ namespace Repositori.EntityFrameworkCore.Repositories
         /// <inheritdoc />
         public async Task CommitTransactionAsync()
         {
-            await Task.Run(() => Context.Database.CommitTransaction());
+            await Context.SaveChangesAsync();
+            if (Context.Database.CurrentTransaction != null)
+                Context.Database.CommitTransaction();
         }
 
         /// <inheritdoc />
         public async Task RollbackTransactionAsync()
         {
-            await Task.Run(() => Context.Database.RollbackTransaction());
+            if (Context.Database.CurrentTransaction != null)
+                await Task.Run(() => Context.Database.RollbackTransaction());
         }
     }
 }
