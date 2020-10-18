@@ -9,7 +9,7 @@
         <PackageTags>repository repositori ef entityframework</PackageTags>
         <PackageId>Repositori.EntityFrameworkCore</PackageId>
         <SignAssembly>true</SignAssembly>
-        <Version>0.1.2</Version>
+        <Version>0.1.3</Version>
         <Title>Repositori EFCore</Title>
     </PropertyGroup>
 

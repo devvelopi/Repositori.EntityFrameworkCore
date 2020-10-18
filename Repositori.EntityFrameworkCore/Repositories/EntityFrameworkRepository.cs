@@ -30,52 +30,52 @@ namespace Repositori.EntityFrameworkCore.Repositories
         }
 
         /// <inheritdoc />
-        public IQueryable<TEntity> Query => Context.Set<TEntity>();
+        public virtual IQueryable<TEntity> Query => Context.Set<TEntity>();
 
         /// <inheritdoc />
-        public TEntity GetById(TIdentifier id) => Query.FirstOrDefault(e => e.Id.Equals(id));
+        public virtual TEntity GetById(TIdentifier id) => Query.FirstOrDefault(e => e.Id.Equals(id));
 
         /// <inheritdoc />
-        public async Task<TEntity> GetByIdAsync(TIdentifier id) =>
+        public virtual async Task<TEntity> GetByIdAsync(TIdentifier id) =>
             await Query.FirstOrDefaultAsync(e => e.Id.Equals(id));
 
         /// <inheritdoc />
-        public TEntity Create(TEntity entity)
+        public virtual TEntity Create(TEntity entity)
         {
             var entityEntry = Context.Set<TEntity>().Add(entity);
             return entityEntry.Entity;
         }
 
         /// <inheritdoc />
-        public async Task<TEntity> CreateAsync(TEntity entity)
+        public virtual async Task<TEntity> CreateAsync(TEntity entity)
         {
             var entityEntry = await Context.Set<TEntity>().AddAsync(entity);
             return entityEntry.Entity;
         }
 
         /// <inheritdoc />
-        public List<TEntity> Create(ICollection<TEntity> entities)
+        public virtual List<TEntity> Create(ICollection<TEntity> entities)
         {
             Context.Set<TEntity>().AddRange(entities);
             return entities.ToList();
         }
 
         /// <inheritdoc />
-        public async Task<List<TEntity>> CreateAsync(ICollection<TEntity> entities)
+        public virtual async Task<List<TEntity>> CreateAsync(ICollection<TEntity> entities)
         {
             await Context.Set<TEntity>().AddRangeAsync(entities);
             return entities.ToList();
         }
 
         /// <inheritdoc />
-        public TEntity Update(TEntity entity)
+        public virtual TEntity Update(TEntity entity)
         {
             Context.Entry(entity).State = EntityState.Modified;
             return entity;
         }
 
         /// <inheritdoc />
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             return await Task.Run(() =>
             {
@@ -85,7 +85,7 @@ namespace Repositori.EntityFrameworkCore.Repositories
         }
 
         /// <inheritdoc />
-        public List<TEntity> Update(ICollection<TEntity> entities)
+        public virtual List<TEntity> Update(ICollection<TEntity> entities)
         {
             foreach (var entity in entities)
             {
@@ -96,7 +96,7 @@ namespace Repositori.EntityFrameworkCore.Repositories
         }
 
         /// <inheritdoc />
-        public async Task<List<TEntity>> UpdateAsync(ICollection<TEntity> entities)
+        public virtual async Task<List<TEntity>> UpdateAsync(ICollection<TEntity> entities)
         {
             return await Task.Run(() =>
             {
@@ -110,34 +110,34 @@ namespace Repositori.EntityFrameworkCore.Repositories
         }
 
         /// <inheritdoc />
-        public TEntity Delete(TEntity entity) => Context.Remove(entity).Entity;
+        public virtual TEntity Delete(TEntity entity) => Context.Remove(entity).Entity;
 
         /// <inheritdoc />
-        public async Task<TEntity> DeleteAsync(TEntity entity) =>
+        public virtual async Task<TEntity> DeleteAsync(TEntity entity) =>
             await Task.Run(() => Context.Remove(entity).Entity);
 
         /// <inheritdoc />
-        public List<TEntity> Delete(ICollection<TEntity> entities)
+        public virtual List<TEntity> Delete(ICollection<TEntity> entities)
         {
             Context.RemoveRange(entities);
             return entities.ToList();
         }
 
         /// <inheritdoc />
-        public async Task<List<TEntity>> DeleteAsync(ICollection<TEntity> entities)
+        public virtual async Task<List<TEntity>> DeleteAsync(ICollection<TEntity> entities)
         {
             return await Task.Run(() => Delete(entities));
         }
 
         /// <inheritdoc />
-        public async Task StartTransactionAsync()
+        public virtual async Task StartTransactionAsync()
         {
             if (Context.Database.CurrentTransaction == null)
                 await Context.Database.BeginTransactionAsync();
         }
 
         /// <inheritdoc />
-        public async Task CommitTransactionAsync()
+        public virtual async Task CommitTransactionAsync()
         {
             await Context.SaveChangesAsync();
             if (Context.Database.CurrentTransaction != null)
@@ -145,7 +145,7 @@ namespace Repositori.EntityFrameworkCore.Repositories
         }
 
         /// <inheritdoc />
-        public async Task RollbackTransactionAsync()
+        public virtual async Task RollbackTransactionAsync()
         {
             if (Context.Database.CurrentTransaction != null)
                 await Task.Run(() => Context.Database.RollbackTransaction());

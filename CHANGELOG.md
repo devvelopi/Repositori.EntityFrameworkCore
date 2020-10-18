@@ -11,3 +11,7 @@
 ### V0.1.2
 
 + Fixed issue with commit transaction not saving entities due to missing call to `SaveChangesAsync`
+
+### V0.1.3
+
++ Allowed overriding of all repository methods for further configurability
